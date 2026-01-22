@@ -1,0 +1,137 @@
+/* Base */
+.home {
+  background: #f1f3f6;
+  min-height: 100vh;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #2874f0, #1b5fd1);
+  padding: 80px 20px;
+  color: white;
+}
+
+.hero-content {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #e3ecff;
+}
+
+.hero button {
+  padding: 12px 28px;
+  background: #fb641b;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hero button:hover {
+  background: #f85606;
+}
+
+/* SECTION */
+.section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #212121;
+}
+
+/* CATEGORIES */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.category-card {
+  background: white;
+  padding: 24px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* PRODUCTS */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: white;
+  padding: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.product-card .brand {
+  font-size: 14px;
+  color: #757575;
+}
+
+.product-card .price {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #212121;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading */
+.loading {
+  color: #555;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+}
