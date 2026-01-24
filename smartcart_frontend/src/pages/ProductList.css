@@ -1,0 +1,115 @@
+/* Page */
+.product-page {
+  background: #f1f3f6;
+  min-height: 100vh;
+  padding: 30px 20px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+/* Header */
+.product-header {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+}
+
+.product-header h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #212121;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px 14px;
+  border: none;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-bar button {
+  padding: 12px 20px;
+  background: #2874f0;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #1b5fd1;
+}
+
+/* Status text */
+.status-text {
+  text-align: center;
+  color: #555;
+  margin-top: 40px;
+}
+
+/* Grid */
+.product-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.product-card {
+  background: #fff;
+  border-radius: 6px;
+  padding: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Info */
+.product-info h4 {
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: #212121;
+}
+
+.product-info .brand {
+  font-size: 13px;
+  color: #757575;
+}
+
+.product-info .price {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #212121;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .product-header h2 {
+    font-size: 20px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar button {
+    width: 100%;
+  }
+}

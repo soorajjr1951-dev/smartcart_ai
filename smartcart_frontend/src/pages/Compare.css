@@ -1,0 +1,59 @@
+.compare-container {
+  padding: 20px;
+}
+
+.compare-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.compare-table {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.compare-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.specs p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.ai-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f7f7f7;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.ai-section select {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.ai-section button {
+  padding: 8px 15px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.recommendation {
+  margin-top: 20px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.recommendation ul {
+  margin-top: 10px;
+}

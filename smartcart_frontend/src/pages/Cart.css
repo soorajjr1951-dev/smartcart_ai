@@ -1,0 +1,156 @@
+/* Page */
+.cart-page {
+  background: #f1f3f6;
+  min-height: 100vh;
+  padding: 30px 20px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.cart-page h2 {
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  font-size: 24px;
+  color: #212121;
+}
+
+/* Layout */
+.cart-layout {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* Items */
+.cart-items {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.item-info h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #212121;
+}
+
+.item-info .price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #212121;
+}
+
+/* Controls */
+.item-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-controls button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #cfd8dc;
+  background: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.qty-controls span {
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Remove */
+.remove-btn {
+  background: none;
+  border: none;
+  color: #d32f2f;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  text-decoration: underline;
+}
+
+/* Summary */
+.cart-summary {
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+}
+
+.cart-summary h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.summary-row.total {
+  font-weight: 600;
+  border-top: 1px dashed #ccc;
+  padding-top: 10px;
+}
+
+/* Checkout */
+.checkout-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  background: #fb641b;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.checkout-btn:hover {
+  background: #f85606;
+}
+
+/* Status */
+.status-text {
+  text-align: center;
+  color: #555;
+  margin-top: 40px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .item-controls {
+    align-items: flex-start;
+  }
+}
