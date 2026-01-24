@@ -1,0 +1,55 @@
+/* Card wrapper */
+.product-card {
+  background: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 16px;
+}
+
+/* Hover effect */
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+/* Card body */
+.product-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Name */
+.product-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #212121;
+  line-height: 1.3;
+}
+
+/* Brand */
+.product-brand {
+  font-size: 13px;
+  color: #757575;
+}
+
+/* Price */
+.product-price {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #212121;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .product-card {
+    padding: 14px;
+  }
+
+  .product-name {
+    font-size: 14px;
+  }
+}
