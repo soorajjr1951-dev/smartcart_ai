@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { getProducts } from "../api/apiService";
 import "./ProductList.css";
 import ProductCard from "../components/ProductCard";
 
 function ProductList() {
-  const navigate = useNavigate();
   const location = useLocation();
-
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
@@ -15,17 +13,22 @@ function ProductList() {
   const queryParams = new URLSearchParams(location.search);
   const category = queryParams.get("category");
 
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const res = await getProducts({ category, search });
+      setProducts(res.data);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to load products ❌");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchProducts();
   }, [category]);
-
-  const fetchProducts = () => {
-    setLoading(true);
-    getProducts({ category, search })
-      .then((res) => setProducts(res.data))
-      .catch(console.error)
-      .finally(() => setLoading(false));
-  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -37,11 +40,10 @@ function ProductList() {
       <div className="product-header">
         <h2>{category ? category : "All"} Products</h2>
 
-        {/* Search */}
         <form className="search-bar" onSubmit={handleSearch}>
           <input
             type="text"
-            placeholder="Search for products, brands and more"
+            placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -49,7 +51,6 @@ function ProductList() {
         </form>
       </div>
 
-      {/* Products */}
       {loading ? (
         <p className="status-text">Loading products...</p>
       ) : products.length === 0 ? (

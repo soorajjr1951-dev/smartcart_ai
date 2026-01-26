@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
 import { getUserOrders } from "../api/apiService";
+import { useAuth } from "../context/AuthContext";
 import "./Orders.css";
 
 function Orders() {
-  // Temporary user ID (later from AuthContext)
-  const userId = 1;
+  const { user } = useAuth();
+  const userId = user?.id;
 
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!userId) return;
+
     getUserOrders(userId)
       .then((res) => setOrders(res.data))
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
-  }, []);
+  }, [userId]);
 
+  if (!userId) return <p className="orders-loading">Please login to view orders</p>;
   if (loading) return <p className="orders-loading">Loading orders...</p>;
 
   return (
@@ -28,15 +32,24 @@ function Orders() {
         orders.map((order) => (
           <div key={order.id} className="order-card">
             <div className="order-header">
-              <span><strong>Order ID:</strong> #{order.id}</span>
+              <span>
+                <strong>Order ID:</strong> #{order.id}
+              </span>
               <span className={`status ${order.status.toLowerCase()}`}>
                 {order.status}
               </span>
             </div>
 
-            <p><strong>Total:</strong> ₹{order.total_price}</p>
-            <p><strong>Address:</strong> {order.address}</p>
-            <p><strong>Date:</strong> {new Date(order.created_at).toLocaleString()}</p>
+            <p>
+              <strong>Total:</strong> ₹{order.total_price}
+            </p>
+            <p>
+              <strong>Address:</strong> {order.address}
+            </p>
+            <p>
+              <strong>Date:</strong>{" "}
+              {new Date(order.created_at).toLocaleString()}
+            </p>
 
             <div className="order-items">
               <h4>Items</h4>

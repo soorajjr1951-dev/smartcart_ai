@@ -1,33 +1,31 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import {
-  checkoutOrder,
-  createPayment,
-  verifyPayment,
-} from "../api/apiService";
+import { useNavigate } from "react-router-dom";
+import { checkoutOrder, createPayment, verifyPayment } from "../api/apiService";
+import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 import "./Checkout.css";
 
 function Checkout() {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { cart, fetchCart } = useCart();
+  const { user } = useAuth();
 
-  const userId = 1;
-
-  // ✅ Get selected product from previous page
-  const { product, quantity = 1 } = location.state || {};
+  const userId = user?.id;
 
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Safety check
-  if (!product) {
-    return <p className="status-text">No product selected</p>;
-  }
+  if (!userId) return <p className="status-text">Please login to checkout</p>;
+  if (!cart || !cart.items || cart.items.length === 0)
+    return <p className="status-text">Your cart is empty</p>;
 
-  // ✅ Calculate totals dynamically
-  const itemsTotal = product.price * quantity;
-  const deliveryCharge = 0;
-  const totalAmount = itemsTotal + deliveryCharge;
+  const totalAmount = cart.total_price;
+
+  const getImg = (item) => {
+    const img = item.product?.images?.[0]?.image;
+    if (!img) return null;
+    return img.startsWith("http") ? img : `http://127.0.0.1:8000${img}`;
+  };
 
   const handlePlaceOrder = async () => {
     if (!address.trim()) {
@@ -41,18 +39,15 @@ function Checkout() {
       const orderRes = await checkoutOrder({
         user_id: userId,
         address,
-        product_id: product.id,
-        quantity,
       });
 
       const paymentRes = await createPayment({
         order_id: orderRes.data.id,
-        amount: totalAmount,
       });
 
       const options = {
         key: paymentRes.data.razorpay_key,
-        amount: totalAmount * 100,
+        amount: Number(totalAmount) * 100,
         currency: "INR",
         name: "SmartCart AI",
         description: "Order Payment",
@@ -63,6 +58,7 @@ function Checkout() {
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_signature: response.razorpay_signature,
           }).then(() => {
+            fetchCart();
             navigate("/orders");
           });
         },
@@ -81,7 +77,6 @@ function Checkout() {
   return (
     <div className="checkout-page">
       <div className="checkout-container">
-        {/* LEFT */}
         <div className="checkout-left">
           <div className="checkout-card">
             <h3>Delivery Address</h3>
@@ -93,27 +88,46 @@ function Checkout() {
           </div>
 
           <div className="checkout-card">
-            <h3>Order Item</h3>
-            <p><strong>{product.name}</strong></p>
-            <p>Price: ₹{product.price}</p>
-            <p>Quantity: {quantity}</p>
+            <h3>Cart Items</h3>
+
+            {cart.items.map((item) => (
+              <div
+                key={item.id}
+                style={{
+                  display: "flex",
+                  gap: 12,
+                  alignItems: "center",
+                  marginBottom: 12,
+                }}
+              >
+                {getImg(item) && (
+                  <img
+                    src={getImg(item)}
+                    alt={item.product.name}
+                    style={{
+                      width: 70,
+                      height: 70,
+                      objectFit: "cover",
+                      borderRadius: 8,
+                    }}
+                  />
+                )}
+
+                <div>
+                  <p style={{ margin: 0 }}>
+                    <strong>{item.product.name}</strong>
+                  </p>
+                  <p style={{ margin: 0 }}>₹{item.product.price}</p>
+                  <p style={{ margin: 0 }}>Qty: {item.quantity}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* RIGHT */}
         <div className="checkout-right">
           <div className="price-card">
             <h3>Price Details</h3>
-
-            <div className="price-row">
-              <span>Items Total</span>
-              <span>₹{itemsTotal}</span>
-            </div>
-
-            <div className="price-row">
-              <span>Delivery Charges</span>
-              <span className="free">FREE</span>
-            </div>
 
             <div className="price-row total">
               <span>Total Amount</span>

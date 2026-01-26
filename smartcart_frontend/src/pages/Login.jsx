@@ -30,7 +30,7 @@ function Login() {
         username: res.data.username,
       });
 
-      navigate("/products");
+      navigate("/home");
     } catch {
       setError("Invalid username or password");
     }

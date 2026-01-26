@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { updateCartItem, removeCartItem } from "../api/apiService";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 import "./Cart.css";
 
 function Cart() {
   const navigate = useNavigate();
   const { cart, loading, fetchCart } = useCart();
+  const { user } = useAuth();
+
+  if (!user) return <p className="status-text">Please login to view cart</p>;
 
   const handleQuantityChange = (itemId, quantity) => {
     if (quantity < 1) return;
@@ -23,7 +27,7 @@ function Cart() {
   };
 
   if (loading) return <p className="status-text">Loading cart...</p>;
-  if (!cart || cart.items.length === 0)
+  if (!cart || !cart.items || cart.items.length === 0)
     return <p className="status-text">Your cart is empty</p>;
 
   return (
@@ -31,7 +35,6 @@ function Cart() {
       <h2>Your Cart</h2>
 
       <div className="cart-layout">
-        {/* CART ITEMS */}
         <div className="cart-items">
           {cart.items.map((item) => (
             <div key={item.id} className="cart-item">
@@ -70,7 +73,6 @@ function Cart() {
           ))}
         </div>
 
-        {/* SUMMARY */}
         <div className="cart-summary">
           <h3>Price Details</h3>
 
@@ -84,10 +86,7 @@ function Cart() {
             <span>₹{cart.total_price}</span>
           </div>
 
-          <button
-            className="checkout-btn"
-            onClick={() => navigate("/checkout")}
-          >
+          <button className="checkout-btn" onClick={() => navigate("/checkout")}>
             Proceed to Checkout
           </button>
         </div>

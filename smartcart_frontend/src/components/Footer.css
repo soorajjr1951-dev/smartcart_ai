@@ -1,0 +1,49 @@
+/* ✅ FILE: src/components/Footer.css */
+
+.footer {
+  background-color: #111;
+  color: #fff;
+  margin-top: 50px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 40px 30px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 12px;
+}
+
+.footer-section p {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.footer-section ul li:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  background-color: #000;
+  text-align: center;
+  padding: 12px;
+  font-size: 13px;
+  color: #aaa;
+}

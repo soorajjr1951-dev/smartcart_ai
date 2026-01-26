@@ -1,0 +1,126 @@
+[
+  {
+    "name": "HP Pavilion 15",
+    "brand": "HP",
+    "category": "LAPTOP",
+    "price": 58999,
+    "stock": 10,
+    "description": "Good for students and coding",
+    "specs": {
+      "RAM": "16GB",
+      "CPU": "Intel i5",
+      "Storage": "512GB SSD",
+      "Battery": "6 hours"
+    },
+    "images": ["hp_pavilion.jpg"]
+  },
+  {
+    "name": "Redragon Mechanical Keyboard",
+    "brand": "Redragon",
+    "category": "KEYBOARD",
+    "price": 2399,
+    "stock": 25,
+    "description": "RGB mechanical keyboard",
+    "specs": {
+      "Type": "Mechanical",
+      "RGB": "Yes",
+      "Switch": "Blue",
+      "Connectivity": "Wired"
+    },
+    "images": ["redragon_keyboard.jpg"]
+  },
+  {
+    "name": "Logitech Gaming Mouse",
+    "brand": "Logitech",
+    "category": "MOUSE",
+    "price": 999,
+    "stock": 30,
+    "description": "Best for gaming",
+    "specs": {
+      "DPI": "7200",
+      "Wireless": "Yes",
+      "Buttons": "6"
+    },
+    "images": ["logitech_mouse.jpg"]
+  },
+  {
+    "name": "ASUS VivoBook 15",
+    "brand": "ASUS",
+    "category": "LAPTOP",
+    "price": 54999,
+    "stock": 12,
+    "description": "Lightweight laptop best for students and coding.",
+    "specs": {
+      "RAM": "16GB",
+      "CPU": "Ryzen 5",
+      "Storage": "512GB SSD",
+      "Battery": "7 hours",
+      "Display": "15.6 inch FHD"
+    },
+    "images": ["asus_vivobook.jpg"]
+  },
+  {
+    "name": "Dell Inspiron 14",
+    "brand": "Dell",
+    "category": "LAPTOP",
+    "price": 60999,
+    "stock": 8,
+    "description": "Reliable performance for office work and programming.",
+    "specs": {
+      "RAM": "16GB",
+      "CPU": "Intel i5",
+      "Storage": "512GB SSD",
+      "Battery": "6 hours",
+      "Display": "14 inch FHD"
+    },
+    "images": ["dell_inspiron.jpg"]
+  },
+  {
+    "name": "Lenovo IdeaPad Slim 3",
+    "brand": "Lenovo",
+    "category": "LAPTOP",
+    "price": 49999,
+    "stock": 15,
+    "description": "Affordable laptop for students and daily usage.",
+    "specs": {
+      "RAM": "8GB",
+      "CPU": "Intel i3",
+      "Storage": "512GB SSD",
+      "Battery": "6 hours",
+      "Weight": "1.6kg"
+    },
+    "images": ["lenovo_ideapad.jpg"]
+  },
+  {
+    "name": "Logitech K380 Wireless Keyboard",
+    "brand": "Logitech",
+    "category": "KEYBOARD",
+    "price": 2699,
+    "stock": 30,
+    "description": "Compact wireless keyboard, perfect for productivity.",
+    "specs": {
+      "Type": "Membrane",
+      "Wired/Wireless": "Wireless",
+      "Bluetooth": "Yes",
+      "Battery": "2 years",
+      "Multi-device": "Yes"
+    },
+    "images": ["logitech_k380.jpg"]
+  },
+  {
+    "name": "Razer DeathAdder Essential",
+    "brand": "Razer",
+    "category": "MOUSE",
+    "price": 1499,
+    "stock": 20,
+    "description": "Ergonomic gaming mouse with high precision sensor.",
+    "specs": {
+      "DPI": "6400",
+      "Wired/Wireless": "Wired",
+      "Gaming": "Yes",
+      "Buttons": "5",
+      "Weight": "96g"
+    },
+    "images": ["razer_deathadder.jpg"]
+  }
+]

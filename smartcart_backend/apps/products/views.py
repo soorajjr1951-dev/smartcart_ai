@@ -1,11 +1,9 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Product
 from .serializers import ProductSerializer
 
-# Create your views here.
 class ProductListAPIView(APIView):
     def get(self, request):
         category = request.GET.get("category")
@@ -19,19 +17,16 @@ class ProductListAPIView(APIView):
         if search:
             products = products.filter(name__icontains=search)
 
-        serializer = ProductSerializer(products, many=True)
+        serializer = ProductSerializer(products, many=True, context={"request": request})
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
+
+
 class ProductDetailAPIView(APIView):
     def get(self, request, pk):
         try:
             product = Product.objects.get(id=pk)
         except Product.DoesNotExist:
-            return Response(
-                {"error": "Product not found"},
-                status=status.HTTP_404_NOT_FOUND
-            )
+            return Response({"error": "Product not found"}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer = ProductSerializer(product)
+        serializer = ProductSerializer(product, context={"request": request})
         return Response(serializer.data, status=status.HTTP_200_OK)
-
